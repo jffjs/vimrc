@@ -32,6 +32,11 @@ Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 Plugin 'scrooloose/syntastic'
 Plugin 'sheerun/vim-polyglot'
 
+" NERDTree addons
+Plugin 'ryanoasis/vim-devicons'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -48,11 +53,13 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+" Display
+set guifont=Inconsolata\ for\ Powerline:h15
+set background=dark
+colorscheme solarized
 if has("gui_running")
+  set guifont=SauceCodePro\ Nerd\ Font:h13
   let s:uname = system("uname")
-  if s:uname == "Darwin\n"
-    set guifont=Inconsolata\ for\ Powerline:h15
-  endif
   "disable right scrollbar
   set guioptions-=r
   set guioptions-=R
@@ -65,10 +72,8 @@ else
   set term=xterm-256color
   set termencoding=utf-8
 endif
+set encoding=utf8
 
-set guifont=Inconsolata\ for\ Powerline:h15
-set background=dark
-colorscheme solarized
 set number
 set showcmd
 set tabstop=2
@@ -120,7 +125,11 @@ let g:airline_section_y = '%{winnr()}'
 
 
 " NERDTree
-nnoremap <leader>ft :NERDTree<cr>
+let NERDTreeQuitOnOpen = 1
+let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeDirArrows = 1
+nnoremap <leader>ft :NERDTreeToggle<cr>
+nnoremap <leader>fv :NERDTreeFind<cr>
 
 
 " CtrlP
