@@ -11,6 +11,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'tpope/vim-sensible'
+Plugin 'tpope/vim-dispatch'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -86,7 +87,9 @@ nnoremap <leader>wh :split<cr>
 nnoremap <leader>nr :call NumberToggle()<cr>
 
 " navigation
+" jump to last buffer
 nnoremap <leader><tab> <C-^>
+" jump to window number
 nnoremap <leader>1 :exe 1 . "wincmd w"<cr>
 nnoremap <leader>2 :exe 2 . "wincmd w"<cr>
 nnoremap <leader>3 :exe 3 . "wincmd w"<cr>
@@ -96,6 +99,7 @@ nnoremap <leader>6 :exe 6 . "wincmd w"<cr>
 nnoremap <leader>7 :exe 7 . "wincmd w"<cr>
 nnoremap <leader>8 :exe 8 . "wincmd w"<cr>
 nnoremap <leader>9 :exe 9 . "wincmd w"<cr>
+" directional window navigation
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -106,6 +110,8 @@ nnoremap <C-l> <C-w>l
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>gd :Gdiff<cr>
+nnoremap <leader>gP :Gpush<cr>
+nnoremap <leader>gF :Gpull<cr>
 
 
 " airline
