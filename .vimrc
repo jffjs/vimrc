@@ -28,7 +28,7 @@ Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'jszakmeister/vim-togglecursor'
 Plugin 'kshenoy/vim-signature'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
-" Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 Plugin 'sheerun/vim-polyglot'
 
 
@@ -79,7 +79,7 @@ let mapleader = "\<Space>"
 " universal mappings
 inoremap jk <esc>
 nnoremap <leader>sv :source $MYVIMRC<cr>
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>ev :vsplit ~/vimrc/.vimrc<cr>
 nnoremap <leader>pi :PluginInstall<cr>
 nnoremap <leader>wv :vsplit<cr>
 nnoremap <leader>wh :split<cr>
@@ -100,6 +100,12 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+
+" fugitive
+nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader>gb :Gblame<cr>
+nnoremap <leader>gd :Gdiff<cr>
 
 
 " airline
