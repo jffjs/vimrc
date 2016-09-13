@@ -127,6 +127,7 @@ let g:airline_section_y = '%{winnr()}'
 " NERDTree
 let NERDTreeQuitOnOpen = 1
 let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 nnoremap <leader>ft :NERDTreeToggle<cr>
 nnoremap <leader>fv :NERDTreeFind<cr>
