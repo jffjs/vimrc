@@ -12,6 +12,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-dispatch'
+Plugin 'jacoborus/tender'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -56,10 +57,14 @@ filetype plugin indent on    " required
 " Display
 set guifont=Inconsolata\ for\ Powerline:h15
 set background=dark
-colorscheme solarized
+colorscheme tender
 if has("gui_running")
+  " MacVim settings
   set guifont=SauceCodePro\ Nerd\ Font:h13
   let s:uname = system("uname")
+  if s:uname == "Darwin\n"
+    let macvim_skip_colorscheme=1
+  endif
   "disable right scrollbar
   set guioptions-=r
   set guioptions-=R
@@ -67,15 +72,17 @@ if has("gui_running")
   set guioptions-=l
   set guioptions-=L
 else
+  " Terminal settings
   set t_Co=256
   set fillchars+=stl:\ ,stlnc:\
   set term=xterm-256color
   set termencoding=utf-8
 endif
 set encoding=utf8
-
+set cursorline
 set number
 set showcmd
+
 set tabstop=2
 set shiftwidth=2
 set expandtab
