@@ -33,6 +33,7 @@ Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 Plugin 'scrooloose/syntastic'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'tpope/vim-sleuth'
+Plugin 'valloric/youcompleteme'
 
 " NERDTree addons
 Plugin 'ryanoasis/vim-devicons'
@@ -84,8 +85,8 @@ set cursorline
 set number
 set showcmd
 
-" set tabstop=2
-" set shiftwidth=2
+set tabstop=2
+set shiftwidth=2
 " set expandtab
 
 
@@ -122,14 +123,14 @@ nnoremap <C-l> <C-w>l
 " fugitive
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gb :Gblame<cr>
-nnoremap <leader>gd :Gdiff<cr>
+nnoremap <leader>gd :Gvdiff<cr>
 nnoremap <leader>gP :Gpush<cr>
 nnoremap <leader>gF :Gpull<cr>
 
 
 " airline
 let g:airline_powerline_fonts = 1
-let g:airline_section_y = '%{winnr()}'
+" let g:airline_section_y = '%{winnr()}'
 " enable tender airline theme
 let g:tender_airline = 1
 " set airline theme
@@ -176,8 +177,28 @@ let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 2
 
 
+" YouCompleteMe
+" let g:ycm_autoclose_preview_window_after_completion = 1
+" disable Preview
+set completeopt-=preview
+let g:ycm_add_preview_to_completeopt = 0
+" This fixes 'User Defined Completion' error message - https://github.com/Valloric/YouCompleteMe/issues/1562
+set shortmess+=c
+
+
+" Syntastic
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 " Javascript
+let g:syntastic_javascript_checkers = ['eslint']
 " autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
-" let g:jsx_ext_required = 0
+let g:jsx_ext_required = 0
 " let g:javascript_plugin_jsdoc = 1
 " let g:javascript_plugin_ngdoc = 1
