@@ -32,6 +32,7 @@ Plugin 'kshenoy/vim-signature'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 Plugin 'scrooloose/syntastic'
 Plugin 'sheerun/vim-polyglot'
+Plugin 'tpope/vim-sleuth'
 
 " NERDTree addons
 Plugin 'ryanoasis/vim-devicons'
@@ -83,9 +84,9 @@ set cursorline
 set number
 set showcmd
 
-set tabstop=2
-set shiftwidth=2
-set expandtab
+" set tabstop=2
+" set shiftwidth=2
+" set expandtab
 
 
 let mapleader = "\<Space>"
@@ -176,7 +177,7 @@ let g:indent_guides_guide_size = 2
 
 
 " Javascript
-autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+" autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 " let g:jsx_ext_required = 0
 " let g:javascript_plugin_jsdoc = 1
 " let g:javascript_plugin_ngdoc = 1
