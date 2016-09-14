@@ -129,6 +129,10 @@ nnoremap <leader>gF :Gpull<cr>
 " airline
 let g:airline_powerline_fonts = 1
 let g:airline_section_y = '%{winnr()}'
+" enable tender airline theme
+let g:tender_airline = 1
+" set airline theme
+let g:airline_theme = 'tender'
 
 
 " NERDTree
