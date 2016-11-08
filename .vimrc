@@ -32,7 +32,9 @@ Plugin 'kshenoy/vim-signature'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 Plugin 'scrooloose/syntastic'
 Plugin 'sheerun/vim-polyglot'
-Plugin 'tpope/vim-sleuth'
+" Plugin 'tpope/vim-sleuth'
+Plugin 'chrisbra/colorizer'
+Plugin 'alvan/vim-closetag'
 Plugin 'valloric/youcompleteme'
 
 " NERDTree addons
@@ -87,7 +89,8 @@ set showcmd
 
 set tabstop=2
 set shiftwidth=2
-" set expandtab
+set expandtab
+set smarttab
 
 
 let mapleader = "\<Space>"
@@ -99,6 +102,7 @@ nnoremap <leader>pi :PluginInstall<cr>
 nnoremap <leader>wv :vsplit<cr>
 nnoremap <leader>wh :split<cr>
 nnoremap <leader>nr :call NumberToggle()<cr>
+iabbrev </ </<C-X><C-O>
 
 " navigation
 " jump to last buffer
@@ -138,6 +142,7 @@ let g:airline_theme = 'tender'
 
 
 " NERDTree
+let g:webdevicons_enable_nerdtree = 0
 let NERDTreeQuitOnOpen = 1
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeMinimalUI = 1
@@ -191,10 +196,15 @@ set shortmess+=c
 " set statusline+=%{SyntasticStatuslineFlag()}
 " set statusline+=%*
 
+nnoremap <leader>el :SyntasticCheck<cr>
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_mode_map = {
+      \ "mode": "active",
+      \ "active_filetypes": [],
+      \ "passive_filetypes": ["javascript"] }
 
 " Javascript
 let g:syntastic_javascript_checkers = ['eslint']
@@ -202,3 +212,9 @@ let g:syntastic_javascript_checkers = ['eslint']
 let g:jsx_ext_required = 0
 " let g:javascript_plugin_jsdoc = 1
 " let g:javascript_plugin_ngdoc = 1
+
+
+" HTML, CSS
+let g:closetag_filenames = "*.html*,*.xhtml,*.phtml"
+let g:colorizer_auto_filetype='scss,sass,css,less,stylus,html'
+au FileType html,html.handlebars let b:delimitMate_matchpairs = "(:),[:],{:}"
