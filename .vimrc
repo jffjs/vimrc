@@ -12,14 +12,12 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-dispatch'
-Plugin 'jacoborus/tender'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-endwise'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'mileszs/ack.vim'
@@ -37,6 +35,9 @@ Plugin 'slashmili/alchemist.vim'
 Plugin 'chrisbra/colorizer'
 Plugin 'alvan/vim-closetag'
 Plugin 'valloric/youcompleteme'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'jacoborus/tender'
 
 " NERDTree addons
 Plugin 'ryanoasis/vim-devicons'
@@ -62,6 +63,9 @@ filetype plugin indent on    " required
 " Display
 set guifont=Inconsolata\ for\ Powerline:h15
 set background=dark
+if (has("termguicolors"))
+ set termguicolors
+endif
 colorscheme tender
 if has("gui_running")
   " MacVim settings
@@ -133,15 +137,6 @@ nnoremap <leader>gP :Gpush<cr>
 nnoremap <leader>gF :Gpull<cr>
 
 
-" airline
-let g:airline_powerline_fonts = 1
-" let g:airline_section_y = '%{winnr()}'
-" enable tender airline theme
-let g:tender_airline = 1
-" set airline theme
-let g:airline_theme = 'tender'
-
-
 " NERDTree
 let g:webdevicons_enable_nerdtree = 0
 let NERDTreeQuitOnOpen = 1
@@ -169,6 +164,15 @@ else
         \ 'AcceptSelection("e")': ['<space>', '<cr>', '<2-LeftMouse>'],
         \ }
 endif
+
+
+" airline
+let g:airline_powerline_fonts = 1
+" let g:airline_section_y = '%{winnr()}'
+" enable tender airline theme
+let g:tender_airline = 1
+" set airline theme
+let g:airline_theme = 'tender'
 
 
 " Ack
