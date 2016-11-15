@@ -17,7 +17,6 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-endwise'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'mileszs/ack.vim'
@@ -31,6 +30,7 @@ Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 Plugin 'scrooloose/syntastic'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'slashmili/alchemist.vim'
+Plugin 'tpope/vim-endwise'
 " Plugin 'tpope/vim-sleuth'
 Plugin 'chrisbra/colorizer'
 Plugin 'alvan/vim-closetag'
@@ -38,6 +38,10 @@ Plugin 'valloric/youcompleteme'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'jacoborus/tender'
+
+"Lang
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'ElmCast/elm-vim'
 
 " NERDTree addons
 Plugin 'ryanoasis/vim-devicons'
@@ -208,11 +212,16 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = {
       \ "mode": "active",
-      \ "active_filetypes": [],
+      \ "active_filetypes": ["elm"],
       \ "passive_filetypes": ["javascript"] }
+let g:elm_syntastic_show_warnings = 1
+let g:syntastic_elm_checkers = [ 'elm_make' ]
+let g:syntastic_javascript_checkers = ['eslint']
+
+
+let g:polyglot_disabled = ['elixir', 'elm']
 
 " Javascript
-let g:syntastic_javascript_checkers = ['eslint']
 " autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 let g:jsx_ext_required = 0
 " let g:javascript_plugin_jsdoc = 1
