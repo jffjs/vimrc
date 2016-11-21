@@ -1,68 +1,56 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+function! BuildYCM(info)
+  " info is a dictionary with 3 fields
+  " - name:   name of the plugin
+  " - status: 'installed', 'updated', or 'unchanged'
+  " - force:  set on PlugInstall! or PlugUpdate!
+  if a:info.status == 'installed' || a:info.force
+    !./install.py
+  endif
+endfunction
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+call plug#begin('~/.vim/plugged')
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'mileszs/ack.vim'
+Plug 'vim-scripts/gitignore'
+Plug 'raimondi/delimitmate'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'bronson/vim-trailing-whitespace'
+Plug 'kshenoy/vim-signature'
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-endwise'
+" Plug 'tpope/vim-sleuth'
+Plug 'alvan/vim-closetag'
+Plug 'jszakmeister/vim-togglecursor'
+Plug 'chrisbra/colorizer'
+Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+Plug 'vim-airline/vim-airline'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
-Plugin 'tpope/vim-sensible'
-Plugin 'tpope/vim-dispatch'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-surround'
-Plugin 'scrooloose/nerdtree'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'mileszs/ack.vim'
-Plugin 'vim-scripts/gitignore'
-Plugin 'raimondi/delimitmate'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'bronson/vim-trailing-whitespace'
-Plugin 'jszakmeister/vim-togglecursor'
-Plugin 'kshenoy/vim-signature'
-Plugin 'jeffkreeftmeijer/vim-numbertoggle'
-Plugin 'scrooloose/syntastic'
-Plugin 'sheerun/vim-polyglot'
-Plugin 'slashmili/alchemist.vim'
-Plugin 'tpope/vim-endwise'
-" Plugin 'tpope/vim-sleuth'
-Plugin 'chrisbra/colorizer'
-Plugin 'alvan/vim-closetag'
-Plugin 'valloric/youcompleteme'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'jacoborus/tender'
+" Themes
+Plug 'vim-airline/vim-airline-themes'
+Plug 'altercation/vim-colors-solarized'
+Plug 'jacoborus/tender'
 
-"Lang
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'ElmCast/elm-vim'
+" Lang
+Plug 'sheerun/vim-polyglot'
+Plug 'elixir-lang/vim-elixir'
+Plug 'slashmili/alchemist.vim'
+Plug 'ElmCast/elm-vim'
+Plug 'Quramy/vim-js-pretty-template'
+Plug 'leafgarland/typescript-vim'
+Plug 'Quramy/tsuquyomi'
 
-" NERDTree addons
-Plugin 'ryanoasis/vim-devicons'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+call plug#end()
 
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
 
 " Display
 set guifont=Inconsolata\ for\ Powerline:h15
@@ -106,8 +94,9 @@ let mapleader = "\<Space>"
 " universal mappings
 inoremap jk <esc>
 nnoremap <leader>sv :source $MYVIMRC<cr>
-nnoremap <leader>ev :vsplit ~/.vimrc<cr>
-nnoremap <leader>pi :PluginInstall<cr>
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>pi :PlugInstall<cr>
+nnoremap <leader>pu :PlugUpdate<cr>
 nnoremap <leader>wv :vsplit<cr>
 nnoremap <leader>wh :split<cr>
 nnoremap <leader>nr :call NumberToggle()<cr>
@@ -238,8 +227,15 @@ let g:jsx_ext_required = 0
 " let g:javascript_plugin_jsdoc = 1
 " let g:javascript_plugin_ngdoc = 1
 
+" Typescript
+""" js pretty templates
+autocmd FileType typescript JsPreTmpl markdown
+autocmd FileType typescript syn clear foldBraces
+
 
 " HTML, CSS
 let g:closetag_filenames = "*.html*,*.xhtml,*.phtml"
 let g:colorizer_auto_filetype='scss,sass,css,less,stylus,html'
 au FileType html,html.handlebars let b:delimitMate_matchpairs = "(:),[:],{:}"
+
+
