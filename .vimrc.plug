@@ -231,6 +231,8 @@ let g:jsx_ext_required = 0
 """ js pretty templates
 autocmd FileType typescript JsPreTmpl markdown
 autocmd FileType typescript syn clear foldBraces
+let g:tsuquyomi_disable_quickfix = 1
+let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
 
 
 " HTML, CSS
